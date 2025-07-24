@@ -5,6 +5,11 @@
         z-index: 1030;
     }
 
+        .navbar-nav {
+        display: flex;
+        align-items: center; /* Ini akan memastikan semua item sejajar vertikal */
+    }
+    
     .btn-login {
         border-radius: .25rem;
         padding: 0.5rem 1rem;
