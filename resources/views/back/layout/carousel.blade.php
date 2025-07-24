@@ -41,7 +41,7 @@
 
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img class="d-block w-100" src="{{ asset('uploads/mobil.png') }}" alt="First slide">
+            <img class="d-block w-100" src="{{ asset('images/carousel/image 1.png') }}" alt="First slide">
             <a href="https://youtu.be/F38EuG2dAyM?si=KgyVny90rYeEqtKQ" class="stretched-link"></a>
             <div class="carousel-caption d-none d-md-block">
                 <h5>Lorem Ipsum</h5>
@@ -50,7 +50,7 @@
         </div>
 
         <div class="carousel-item">
-            <img class="d-block w-100" src="{{ asset('uploads/gambar2.png') }}" alt="Second slide">
+            <img class="d-block w-100" src="{{ asset('images/carousel/-1x-1.webp') }}" alt="Second slide">
             <a href="https://contoh-link-2.com" class="stretched-link"></a>
             <div class="carousel-caption d-none d-md-block">
                 <h5>Lorem Ipsum</h5>
@@ -59,7 +59,7 @@
         </div>
 
         <div class="carousel-item">
-            <img class="d-block w-100" src="{{ asset('uploads/image.png') }}" alt="Third slide">
+            <img class="d-block w-100" src="{{ asset('images/carousel/lingard.jpg') }}" alt="Third slide">
             <a href="https://contoh-link-3.com" class="stretched-link"></a>
             <div class="carousel-caption d-none d-md-block">
                 <h5>Lorem Ipsum</h5>
