@@ -95,6 +95,24 @@
                         </li>
                     </ul>
                 </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle px-lg-3 py-3 py-lg-4" href="#" id="aboutDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Konsentrasi Keahlian
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+                        <li>
+                            <a class="dropdown-item" href="{{ url('/pplg') }}">
+                          Pengembangan Perangkat Lunak dan Gim
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="/tjkt">
+                            Teknik Jaringan Komputer dan Telekomunikasi
+                            </a>
+                        </li>
+                    </ul>
+                </li>
 
                 <li class="nav-item">
                     <a class="btn btn-dark btn-login ms-lg-3 mt-lg-2 mt-2" href="#">Login</a>

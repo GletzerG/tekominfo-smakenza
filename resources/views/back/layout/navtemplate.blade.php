@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>@yield('title', 'Tekominfo')</title>
@@ -8,6 +9,7 @@
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     @stack('styles')
 </head>
+
 <body>
 
     @include('back.layout.navbar')
@@ -18,4 +20,5 @@
 
     @stack('scripts')
 </body>
+
 </html>

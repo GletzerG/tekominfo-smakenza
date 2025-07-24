@@ -22,3 +22,9 @@ Route::get('/visi-misi', function () {
 Route::get('/teacher-profile', function () {
     return view('navbar.about.teacher-profile');
 });
+Route::get('/pplg', function () {
+    return view('navbar.konsentrasi-keahlian.pplg');
+});
+Route::get('/tjkt', function () {
+    return view('navbar.konsentrasi-keahlian.tjkt');
+});
