@@ -16,3 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/visi-misi', function () {
+    return view('navbar.about.visimisi');
+});
+Route::get('/teacher-profile', function () {
+    return view('navbar.about.teacher-profile');
+});
