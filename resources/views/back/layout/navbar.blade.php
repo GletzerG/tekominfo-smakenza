@@ -3,13 +3,17 @@
         position: sticky;
         top: 0;
         z-index: 1030;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+        max-width: 100%;
     }
 
+    
         .navbar-nav {
         display: flex;
         align-items: center; /* Ini akan memastikan semua item sejajar vertikal */
     }
-    
+
     .btn-login {
         border-radius: .25rem;
         padding: 0.5rem 1rem;
