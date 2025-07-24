@@ -71,7 +71,7 @@
             Menu <i class="fas fa-bars"></i>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarResponsive">
+        <div class="collapse navbar-collapse justify-content-end" id="navbarResponsive">
             <ul class="navbar-nav ms-auto py-4 py-lg-0">
                 <li class="nav-item">
                     <a class="nav-link px-lg-3 py-3 py-lg-4" href="/">Home</a>
@@ -95,28 +95,40 @@
                         </li>
                     </ul>
                 </li>
+
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle px-lg-3 py-3 py-lg-4" href="#" id="aboutDropdown" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle px-lg-3 py-3 py-lg-4" href="#" id="konsentrasiDropdown"
+                        role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Konsentrasi Keahlian
                     </a>
-                    <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+                    <ul class="dropdown-menu" aria-labelledby="konsentrasiDropdown">
                         <li>
                             <a class="dropdown-item" href="{{ url('/pplg') }}">
-                          Pengembangan Perangkat Lunak dan Gim
+                                Pengembangan Perangkat Lunak dan Gim
                             </a>
                         </li>
                         <li>
                             <a class="dropdown-item" href="/tjkt">
-                            Teknik Jaringan Komputer dan Telekomunikasi
+                                Teknik Jaringan Komputer dan Telekomunikasi
                             </a>
                         </li>
                     </ul>
                 </li>
 
-                <li class="nav-item">
-                    <a class="btn btn-dark btn-login ms-lg-3 mt-lg-2 mt-2" href="#">Login</a>
+                <!-- User dropdown PISAH di luar dropdown lain -->
+                <li class="nav-item dropdown no-arrow">
+                    <a class="nav-link dropdown-toggle d-flex align-items-center px-lg-3 py-3 py-lg-4" href="#" id="userDropdown"
+                        role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img class="img-profile rounded-circle me-1" style="vertical-align: middle;" src="{{ url('/images/asset/orang.jpg') }}" width="30" height="30">
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                            Logout
+                        </a>
+                    </div>
                 </li>
+
             </ul>
         </div>
     </div>
