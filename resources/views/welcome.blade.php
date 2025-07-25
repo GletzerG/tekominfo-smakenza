@@ -31,12 +31,6 @@
                 Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Integer aliquam venenatis
                 rutrum. Nam interdum tincidunt purus ac consequat.</p>
                 <!-- Divider-->
-                <hr class="my-4" />
-                <!-- Pager-->
-                <div class="d-flex justify-content-between mb-4">
-                    <a href="{{ url('/persyaratan') }}" class="btn btn-dark">Persyaratan pendaftaran</a>
-                    <a href="{{ url('/pendaftaran') }}" class="btn btn-dark">Pendaftaran Beasiswa</a>
-                </div>
             </div>
         </div>
     </div>
