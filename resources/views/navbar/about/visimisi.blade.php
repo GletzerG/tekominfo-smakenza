@@ -1,4 +1,4 @@
-@extends('back.layout.navtemplate')
+@extends('back.layout.hero-footertemplate')
 
 @section('content')
 <header class="py-5 bg-light border-bottom mb-4">
