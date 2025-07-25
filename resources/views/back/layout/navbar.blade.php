@@ -8,10 +8,9 @@
         max-width: 100%;
     }
 
-    
-        .navbar-nav {
+    .navbar-nav {
         display: flex;
-        align-items: center; /* Ini akan memastikan semua item sejajar vertikal */
+        align-items: center;
     }
 
     .btn-login {
@@ -41,7 +40,6 @@
         }
     }
 
-    /* Gaya item dropdown */
     .dropdown-item {
         padding: 0.75rem 1.25rem;
         font-weight: 500;
@@ -56,17 +54,28 @@
         background-color: #f8f9fa;
         color: #212529;
     }
+    .navbar .dropdown-toggle::after {
+    display: none;
+}
 
-    /* Ikon dalam dropdown */
     .dropdown-item i {
         font-size: 1rem;
         color: #6c757d;
     }
 
-    /* Responsive hover (desktop only) */
+    /* Panah default dan saat hover */
+    .rotate-arrow {
+        margin-left: 5px;
+        transition: transform 0.3s ease;
+    }
+
     @media (min-width: 992px) {
         .dropdown:hover .dropdown-menu {
             display: block;
+        }
+
+        .dropdown:hover .rotate-arrow {
+            transform: rotate(180deg);
         }
     }
 </style>
@@ -86,10 +95,11 @@
                     <a class="nav-link px-lg-3 py-3 py-lg-4" href="/">Home</a>
                 </li>
 
-                <li class="nav-item dropdown">
+                <!-- ABOUT -->
+                <li class="nav-item dropdown" data-bs-auto-close="true">
                     <a class="nav-link dropdown-toggle px-lg-3 py-3 py-lg-4" href="#" id="aboutDropdown" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
-                        About
+                        About <i class="fas fa-chevron-down rotate-arrow"></i>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
                         <li>
@@ -105,10 +115,11 @@
                     </ul>
                 </li>
 
+                <!-- KONSENTRASI -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle px-lg-3 py-3 py-lg-4" href="#" id="konsentrasiDropdown"
                         role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Konsentrasi Keahlian
+                        Konsentrasi Keahlian <i class="fas fa-chevron-down rotate-arrow"></i>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="konsentrasiDropdown">
                         <li>
@@ -124,7 +135,7 @@
                     </ul>
                 </li>
 
-                <!-- User dropdown PISAH di luar dropdown lain -->
+                <!-- USER -->
                 <li class="nav-item dropdown no-arrow">
                     <a class="nav-link dropdown-toggle d-flex align-items-center px-lg-3 py-3 py-lg-4" href="#" id="userDropdown"
                         role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -137,7 +148,6 @@
                         </a>
                     </div>
                 </li>
-
             </ul>
         </div>
     </div>
