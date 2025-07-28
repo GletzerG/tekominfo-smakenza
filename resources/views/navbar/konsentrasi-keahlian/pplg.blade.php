@@ -1,6 +1,6 @@
 @extends('back.layout.navtemplate')
 
-@section('title', 'Profil Jurusan TJKT')
+@section('title', 'Profil Jurusan PPLG')
 
 @section('content')
 <style>
