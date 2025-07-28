@@ -1,4 +1,4 @@
-@extends('back.layout.navtemplate')
+{{-- {{-- @extends('back.layout.navtemplate')
 
 @section('title', 'Profil GTK')
 
@@ -197,4 +197,203 @@
         </div>
     </div>
 </div>
+@endsection --}}
+@extends('back.layout.navtemplate')
+
+@section('title', 'Profil GTK')
+
+@push('styles')
+    <style>
+        body {
+            background: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .teacher-heading {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #2c3e50;
+            margin: 0 auto 70px auto;
+            text-align: center;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+            border-bottom: 3px solid #2c3e50;
+            padding-bottom: 10px;
+            display: block;
+        }
+
+        .konten {
+            margin-left: 8px;
+            /* Kamu bisa sesuaikan misalnya 10px atau lebih */
+        }
+
+        .teacher-card {
+            display: flex;
+            flex-direction: row;
+            align-items: stretch;
+            border-radius: 20px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            min-height: 200px;
+        }
+
+        .teacher-card:hover {
+            transform: scale(1.015);
+            box-shadow: 0 14px 35px rgba(0, 0, 0, 0.12);
+        }
+
+        .teacher-img {
+            width: 150px;
+            height: auto;
+            object-fit: cover;
+            border-top-left-radius: 20px;
+            border-bottom-left-radius: 20px;
+        }
+
+        .card-body {
+            padding: 20px;
+            font-size: 1rem;
+            width: 100%;
+            color: #34495e;
+        }
+
+        .teacher-info {
+            display: flex;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 5px;
+        }
+
+        .teacher-info strong {
+            width: 180px;
+            color: #2c3e50;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        .teacher-info span {
+            flex: 1;
+        }
+
+        @media (max-width: 400px) {
+            .teacher-card {
+                flex-direction: column;
+            }
+
+            .teacher-img {
+                width: 100%;
+                height: 250px;
+                border-radius: 20px 20px 0 0;
+            }
+
+            .teacher-info {
+                flex-direction: column;
+            }
+
+            .teacher-info strong {
+                width: auto;
+            }
+
+            .teacher-info span {
+                width: auto;
+            }
+        }
+    </style>
+@endpush
+
+@section('content')
+    <div class="container py-4">
+        <h1 class="teacher-heading">Profil GTK</h1>
+
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+            <!-- Card Contoh -->
+            <div class="col">
+                <div class="teacher-card">
+                    <img src="{{ asset('images/teachers/guru5.png') }}" class="teacher-img" alt="Abi Habibi">
+                    <div class="card-body">
+                        <div class="teacher-info"><strong>Nama Lengkap</strong>: <span class="konten">Abi Habibi</span></div>
+                        <div class="teacher-info"><strong>Jenis Kelamin</strong>: <span class="konten">Laki-Laki</span>
+                        </div>
+                        <div class="teacher-info"><strong>Tempat Lahir</strong>: <span class="konten">Jambi</span></div>
+                        <div class="teacher-info"><strong>Tanggal Lahir</strong>: <span class="konten">13 Oktober 1979</span></div>
+                        <div class="teacher-info"><strong>Jenis GTK</strong>: <span class="konten">Guru Bengkel</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="teacher-card">
+                    <img src="{{ asset('images/teachers/guru6.png') }}" class="teacher-img" alt="Achmad Taufik">
+                    <div class="card-body">
+                        <div class="teacher-info"><strong>Nama Lengkap</strong>: <span class="konten">Achmad Taufik</span></div>
+                        <div class="teacher-info"><strong>Jenis Kelamin</strong>: <span class="konten">Laki-Laki</span>
+                        </div>
+                        <div class="teacher-info"><strong>Tempat Lahir</strong>: <span class="konten">Balikpapan</span></div>
+                        <div class="teacher-info"><strong>Tanggal Lahir</strong>: <span class="konten">13 Oktober 1981</span></div>
+                        <div class="teacher-info"><strong>Jenis GTK</strong>: <span class="konten">Guru Bengkel</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="teacher-card">
+                    <img src="{{ asset('images/teachers/guru4.png') }}" class="teacher-img" alt="Cicilia Siswarini">
+                    <div class="card-body">
+                        <div class="teacher-info"><strong>Nama Lengkap</strong>: <span class="konten">Cicilia Siswarini</span></div>
+                        <div class="teacher-info"><strong>Jenis Kelamin</strong>: <span class="konten">Perempuan</span>
+                        </div>
+                        <div class="teacher-info"><strong>Tempat Lahir</strong>: <span class="konten">Bandung</span></div>
+                        <div class="teacher-info"><strong>Tanggal Lahir</strong>: <span class="konten">1 Oktober 1966</span></div>
+                        <div class="teacher-info"><strong>Jenis GTK</strong>: <span class="konten">Guru Bengkel</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="teacher-card">
+                    <img src="{{ asset('images/teachers/guru2.png') }}" class="teacher-img" alt="Etik Sulistyawati">
+                    <div class="card-body">
+                        <div class="teacher-info"><strong>Nama Lengkap</strong>: <span class="konten">Etik Sulistyawati</span></div>
+                        <div class="teacher-info"><strong>Jenis Kelamin</strong>: <span class="konten">Perempuan</span>
+                        </div>
+                        <div class="teacher-info"><strong>Tempat Lahir</strong>: <span class="konten">Boyolali</span></div>
+                        <div class="teacher-info"><strong>Tanggal Lahir</strong>: <span class="konten">16 Mei 1983</span></div>
+                        <div class="teacher-info"><strong>Jenis GTK</strong>: <span class="konten">Guru Bengkel</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="teacher-card">
+                    <img src="{{ asset('images/teachers/guru3.png') }}" class="teacher-img" alt="Evlin Suzanna Pakpahan">
+                    <div class="card-body">
+                        <div class="teacher-info"><strong>Nama Lengkap</strong>: <span class="konten">Evlin Suzanna Pakpahan</span></div>
+                        <div class="teacher-info"><strong>Jenis Kelamin</strong>: <span class="konten">Perempuan</span>
+                        </div>
+                        <div class="teacher-info"><strong>Tempat Lahir</strong>: <span class="konten">Balikpapan</span></div>
+                        <div class="teacher-info"><strong>Tanggal Lahir</strong>: <span class="konten">07 Februari 1984</span></div>
+                        <div class="teacher-info"><strong>Jenis GTK</strong>: <span class="konten">Guru Bengkel</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="teacher-card">
+                    <img src="{{ asset('images/teachers/guru1.png') }}" class="teacher-img" alt="Sayom">
+                    <div class="card-body">
+                        <div class="teacher-info"><strong>Nama Lengkap</strong>: <span class="konten">Sayom</span></div>
+                        <div class="teacher-info"><strong>Jenis Kelamin</strong>: <span class="konten">Laki-Laki</span>
+                        </div>
+                        <div class="teacher-info"><strong>Tempat Lahir</strong>: <span class="konten">Klaten</span></div>
+                        <div class="teacher-info"><strong>Tanggal Lahir</strong>: <span class="konten">07 Februari 1967</span></div>
+                        <div class="teacher-info"><strong>Jenis GTK</strong>: <span class="konten">Guru Bengkel</span></div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+        </div>
+    </div>
 @endsection

@@ -41,29 +41,29 @@
 
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img class="d-block w-100" src="{{ asset('images/carousel/image 1.png') }}" alt="First slide">
-            <a href="https://youtu.be/F38EuG2dAyM?si=KgyVny90rYeEqtKQ" class="stretched-link"></a>
+            <img class="d-block w-100" src="{{ asset('images/carousel/SMK-img.jpg') }}" alt="First slide">
+            <a href="https://smkn1-bpn.sch.id/" class="stretched-link"></a>
             <div class="carousel-caption d-none d-md-block">
-                <h5>Lorem Ipsum</h5>
-                <p>Dolor sit amet consetrour</p>
+                <h5>SMK Negeri 1 Balikpapan</h5>
+                <p>Profile SMK Negeri 1 Balikpapan</p>
             </div>
         </div>
 
         <div class="carousel-item">
-            <img class="d-block w-100" src="{{ asset('images/carousel/-1x-1.webp') }}" alt="Second slide">
-            <a href="https://contoh-link-2.com" class="stretched-link"></a>
+            <img class="d-block w-100" src="{{ asset('images/carousel/PPLG.jpg') }}" alt="Second slide">
+            <a href="pplg" class="stretched-link"></a>
             <div class="carousel-caption d-none d-md-block">
-                <h5>Lorem Ipsum</h5>
-                <p>Dolor sit amet consetrour</p>
+                <h5>Pengembangan Perangkat Lunak dan Gim</h5>
+                <p>Profile Pengembangan Perangkat Lunak dan Gim</p>
             </div>
         </div>
 
         <div class="carousel-item">
-            <img class="d-block w-100" src="{{ asset('images/carousel/lingard.jpg') }}" alt="Third slide">
-            <a href="https://contoh-link-3.com" class="stretched-link"></a>
+            <img class="d-block w-100" src="{{ asset('images/carousel/tkj.jpg') }}" alt="Third slide">
+            <a href="tjkt" class="stretched-link"></a>
             <div class="carousel-caption d-none d-md-block">
-                <h5>Lorem Ipsum</h5>
-                <p>Dolor sit amet consetrour</p>
+                <h5>Teknik Jaringan Komputer dan Telekomunikasi</h5>
+                <p>Profil Teknik Jaringan Komputer dan Telekomunikasi</p>
             </div>
         </div>
     </div>

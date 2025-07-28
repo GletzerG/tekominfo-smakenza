@@ -26,8 +26,7 @@
     {{-- Navbar --}}
     @include('back.layout.navbar')
 
-    {{-- Carousel --}}
-    @include('back.layout.carousel')
+    @include('back.layout.hero')
 
     {{-- Banner / Gambar --}}
     <div class="text-center my-4">
