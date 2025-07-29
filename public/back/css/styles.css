@@ -10841,3 +10841,13 @@ header.masthead .post-heading .meta a {
   gap: 0.5rem;
   /* Jarak antara teks dan gambar */
 }
+
+.nav-link i {
+  margin-right: 8px;
+  /* Jarak ikon ke teks */
+}
+
+.nav-link span {
+  margin-left: 8px;
+  /* Jarak teks ke ikon (opsional kalau mau lebih longgar) */
+}

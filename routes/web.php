@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,4 +27,12 @@ Route::get('/pplg', function () {
 });
 Route::get('/tjkt', function () {
     return view('navbar.konsentrasi-keahlian.tjkt');
+});
+Route::get('/login', function () {
+    return view('auth.login'); // Bukan view('login')
+});
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+
+Route::get('/register', function () {
+    return view('auth.register'); // Bukan view('register')
 });

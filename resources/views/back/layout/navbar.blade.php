@@ -136,22 +136,37 @@
                 </li>
 
                 <!-- USER -->
-                <li class="nav-item dropdown no-arrow">
-                    <a class="nav-link dropdown-toggle d-flex align-items-center px-lg-3 py-3 py-lg-4" href="#" id="userDropdown"
-                        role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img class="img-profile rounded-circle me-1" style="vertical-align: middle;" src="{{ url('/images/asset/orang.jpg') }}" width="30" height="30">
-                    </a>
+        
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="userDropdown" role="button"
+                            data-toggle="dropdown">
+                            <i class="fas fa-user fa-lg text-white mr-2"></i>
+                            <span class="text-white">NAMA SAYA</span>
+                        </a>
+                    <!-- Dropdown - User Information -->
                     <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                        <a class="dropdown-item" href="#">
+                            <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                            Profile
+                        </a>
+                        <a class="dropdown-item" href="{{ url('/login') }}">
+                            <i class="bi bi-box-arrow-in-right fa-sm fa-fw mr-2 text-gray-400"></i>
+                            Sign-in
+                        </a>
+                        <a class="dropdown-item" href="{{ url('/register') }}">
+                            <i class="bi bi-box-arrow-in-right fa-sm fa-fw mr-2 text-gray-400"></i>
+                            Sign-up
+                        </a>
+                        <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                             <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                             Logout
                         </a>
-                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                            <i class="bi bi-sign-intersection fa-sm fa-fw mr-2 text-gray-400"></i>
-                            Logout
-                        </a>
                     </div>
+
+
                 </li>
+
             </ul>
         </div>
     </div>
