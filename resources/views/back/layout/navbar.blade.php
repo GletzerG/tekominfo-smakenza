@@ -83,7 +83,9 @@
 <!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg" id="mainNav">
     <div class="container px-4 px-lg-5">
-        <a class="navbar-brand" href="/">Tekominfo</a>
+        <a class="navbar-brand" href="/">
+            <img src="{{ asset('images/asset/logo.png') }}" alt="Tekominfo Logo" style="height: 40px;">
+            Tekominfo</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
             aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             Menu <i class="fas fa-bars"></i>
