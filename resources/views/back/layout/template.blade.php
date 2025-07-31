@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>TEKOMINFO WEBSITE</title>
 
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="{{ asset('/favicon.ico') }}" />
 
