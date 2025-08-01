@@ -1,43 +1,133 @@
 @extends('back.layout.template')
-
+@extends('back.layout.vidio')
 @section('content')
-    <!-- Main Content-->
-    <div class="container px-4 px-lg-5">
-        <div class="row gx-4 gx-lg-5 justify-content-center">
-            <div class="col-md-10 col-lg-8 col-xl-7">
-                <!-- Post preview-->
-                <h2 class="post-title">Selamat datang di Dashboard </h2>
-                <p class="post-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi elementum eros tellus, eget egestas dui posuere nec.
-                Etiam dolor orci, pellentesque et dapibus ut, consectetur et velit. Suspendisse volutpat libero ac tincidunt blandit.
-                Vestibulum gravida velit sed diam lobortis, id gravida ante consequat. Mauris tincidunt eu justo tristique euismod.
-                Morbi sollicitudin eu turpis et dictum. Orci varius natoque penatibus et magnis dis parturient montes, nascetur
-                ridiculus mus. Duis consequat auctor nunc, quis auctor metus sollicitudin eget. Nunc interdum ut ipsum sit amet
-                tincidunt. Mauris cursus purus magna, non dignissim mi gravida quis. Duis sed lectus quis nibh commodo molestie vel non
-                tellus. Cras fringilla vehicula massa finibus eleifend. Phasellus tristique arcu suscipit turpis blandit, in congue sem
-                lacinia. Nam at felis sed orci tincidunt porttitor. Fusce magna lectus, lacinia eget mattis eget, rhoncus vitae metus.
+                                <!-- Main Content-->
+                    <div class="container px-4 px-lg-5">
+                        <div class="row gx-4 gx-lg-5 justify-content-center">
+                            <div class="video-section">
+                                <div class="section-header">
+                                    <h1 class="section-title">Lihat vidio ini</h1>
+                                    <p class="section-subtitle">Lorem Ipsum Dolor Sit Amet Consectrour</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-                Donec a mauris faucibus, consequat ex ac, blandit dolor. Mauris suscipit ante nec felis sagittis hendrerit vel quis sem.
-                Mauris rutrum eros ut venenatis bibendum. Suspendisse nec auctor lorem, ac cursus ex. Duis aliquet vestibulum purus,
-                dapibus mattis nunc congue eleifend. Duis porta nisl ante, a facilisis neque consectetur non. Suspendisse eget lacus nec
-                mauris mollis gravida commodo eu eros. Maecenas iaculis metus eget tempor consectetur. Maecenas et ex vitae magna
-                aliquam lobortis in ut risus. In hac habitasse platea dictumst. Maecenas eget sagittis elit, et dictum metus. Vivamus
-                euismod pulvinar erat eu blandit. In at iaculis dui. Duis urna tellus, varius sed quam nec, luctus consequat magna.
-                Etiam eu lacus nec velit mollis efficitur. Nunc laoreet nunc id rhoncus ultrices.
+                        <div class="container my-5">
+                            <div class="row g-4">
+                                <!-- Video 1 -->
+                                <div class="col-lg-6 col-md-12">
+                                    <div class="card shadow-lg border-0 h-100">
+                                        <div class="card-body p-0">
+                                            <div class="ratio ratio-16x9">
+                                                <iframe src="https://www.youtube.com/embed/EVflLeN8gZg?si=tmGVs96eIAv0lg2X"
+                                                    title="YouTube video player" frameborder="0"
+                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen class="rounded-top"
+                                                    data-video-id="EVflLeN8gZg">
+                                                </iframe>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
-                Donec consequat nulla non tortor congue, eu rhoncus felis maximus. Phasellus metus mauris, pulvinar quis libero sed,
-                eleifend finibus lacus. Aenean a condimentum ligula. Aliquam interdum nisi sed felis dapibus tincidunt. Mauris ornare
-                porttitor lacus, ut imperdiet quam tempor in. Phasellus et mi lacinia, lacinia diam vitae, vestibulum lacus.
-                Pellentesque porta lectus et sodales condimentum. Pellentesque at leo venenatis, iaculis magna non, pellentesque lectus.
-                Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Integer aliquam venenatis
-                rutrum. Nam interdum tincidunt purus ac consequat.</p>
-                <!-- Divider-->
+                                <!-- Video 2 -->
+                                <div class="col-lg-6 col-md-12">
+                                    <div class="card shadow-lg border-0 h-100">
+                                        <div class="card-body p-0">
+                                            <div class="ratio ratio-16x9">
+                                                <iframe src="https://www.youtube.com/embed/j3p6sXq_uUM?si=_rEwW_eQkclYbCv5"
+                                                    title="YouTube video player" frameborder="0"
+                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen class="rounded-top"
+                                                    data-video-id="j3p6sXq_uUM">
+                                                </iframe>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                <hr class="hr" />
+<div class="text-center my-5">
+  <h1 class="display-4 fw-bold text-warning title-highlight">
+    Judul Artikel Menarik
+  </h1>
+</div>
+                
+
+        <div class="container my-5">
+            <div class="row g-4 justify-content-left">
+                <!-- Artikel 1 -->
+                <div class="col-24 col-md-20 col-lg-16">
+                    <a href="#" class="text-decoration-none">
+                        <div class="card h-100 shadow-lg border-0 hover-shadow transition-all duration-300">
+                            <div class="row g-0 align-items-center">
+                                <!-- Gambar -->
+                                <div class="col-md-5 d-flex justify-content-center align-items-center bg-light">
+                                    <img src="{{ asset('images/carousel/image 1.png') }}" alt="Gambar Artikel"
+                                        class="img-fluid rounded-start w-100" style="max-height: 250px; object-fit: cover;"
+                                        loading="lazy" decoding="async" draggable="false" />
+                                </div>
+                                <!-- Teks Artikel -->
+                                <div class="col-md-7">
+                                    <div class="card-body">
+                                        <h2 class="card-title h4 mb-2 text-primary fw-bold">Judul Artikel</h2>
+                                        <p class="card-subtitle mb-1 text-muted fw-semibold fs-6">Nama Penulis</p>
+                                        <p class="card-text text-secondary mb-0 fs-6" style="text-align: justify;">
+                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed rutrum eu nulla, quis
+                                            lacinia lacus tristique eu.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
             </div>
         </div>
+    <!-- Artikel 2-->
+    <div class="col-24 col-md-20 col-lg-16">
+        <a href="#" class="text-decoration-none">
+            <div class="card h-100 shadow-lg border-0 hover-shadow transition-all duration-300">
+                <div class="row g-0 align-items-center">
+                    <!-- Gambar -->
+                    <div class="col-md-5 d-flex justify-content-center align-items-center bg-light">
+                        <img src="{{ asset('images/asset/image.png') }}" alt="Gambar Artikel"
+                            class="img-fluid rounded-start w-100" style="max-height: 250px; object-fit: cover;"
+                            loading="lazy" decoding="async" draggable="false" />
+                    </div>
+                    <!-- Teks Artikel -->
+                    <div class="col-md-7">
+                        <div class="card-body">
+                            <h2 class="card-title h4 mb-2 text-primary fw-bold">Judul Artikel</h2>
+                            <p class="card-subtitle mb-1 text-muted fw-semibold fs-6">Nama Penulis</p>
+                            <p class="card-text text-secondary mb-0 fs-6" style="text-align: justify;">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed rutrum eu nulla, quis
+                                lacinia lacus tristique eu.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+    </div>
     </div>
 
+            </div>
+            <style>
+                .hover-shadow:hover {
+                    box-shadow: 0 8px 24px rgba(0,0,0,0.15) !important;
+                    transform: translateY(-4px) scale(1.02);
+                }
+            </style>
 
-    <!-- Footer-->
 
 
-    <!-- Bootstrap core JS-->
+                                <!-- Footer-->
+
+
+                                <!-- Bootstrap core JS-->
 @endsection
