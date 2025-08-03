@@ -218,6 +218,15 @@
         border-top: 1px solid rgba(52, 152, 219, 0.2);
     }
 
+.rotate-arrow {
+    transition: transform 0.3s ease;
+}
+
+.show > a > .rotate-arrow {
+    transform: rotate(180deg);
+}
+
+
     /* Responsive */
     @media (max-width: 991.98px) {
         .navbar-collapse {
@@ -260,6 +269,15 @@
         z-index: 9999;
         transition: width 0.3s ease;
     }
+
+    .rotate-arrow {
+    transition: transform 0.3s ease;
+}
+
+.show > a > .rotate-arrow {
+    transform: rotate(180deg);
+}
+
 </style>
 
 <!-- NAVBAR -->
@@ -267,7 +285,9 @@
     <div class="container px-4 px-lg-5">
         <a class="navbar-brand" href="/">
             <img src="{{ asset('images/asset/logo.png') }}" alt="Tekominfo Logo" style="height: 40px;">
-            Tekominfo</a>
+            Tekominfo
+        </a>
+
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
             aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             Menu <i class="fas fa-bars"></i>
@@ -280,20 +300,20 @@
                 </li>
 
                 <!-- ABOUT -->
-                <li class="nav-item dropdown" data-bs-auto-close="true">
+                <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle px-lg-3 py-3 py-lg-4" href="#" id="aboutDropdown" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
-                        About <i class="fas fa-chevron-down rotate-arrow"></i>
+                        About <i class="fas fa-chevron-down ms-1"></i>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
                         <li>
                             <a class="dropdown-item" href="{{ url('/visi-misi') }}">
-                                <i class="fas fa-bullseye"></i> Visi & Misi
+                                <i class="fas fa-bullseye me-2"></i> Visi & Misi
                             </a>
                         </li>
                         <li>
                             <a class="dropdown-item" href="/teacher-profile">
-                                <i class="fas fa-chalkboard-teacher"></i> Teacher Profile
+                                <i class="fas fa-chalkboard-teacher me-2"></i> Teacher Profile
                             </a>
                         </li>
                     </ul>
@@ -301,9 +321,9 @@
 
                 <!-- KONSENTRASI -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle px-lg-3 py-3 py-lg-4" href="#" id="konsentrasiDropdown" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        Konsentrasi Keahlian <i class="fas fa-chevron-down rotate-arrow"></i>
+                    <a class="nav-link dropdown-toggle px-lg-3 py-3 py-lg-4" href="#" id="konsentrasiDropdown"
+                        role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Konsentrasi Keahlian <i class="fas fa-chevron-down ms-1"></i>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="konsentrasiDropdown">
                         <li>
@@ -320,47 +340,62 @@
                 </li>
 
                 <!-- USER -->
-        
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="userDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fas fa-user fa-lg text-white mr-2"></i>
-                            <span class="text-white">NAMA SAYA</span>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end shadow animated--grow-in" aria-labelledby="userDropdown">
-                            <li>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Profile
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="{{ url('/login') }}">
-                                    <i class="bi bi-box-arrow-in-right fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Sign-in
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="{{ url('/register') }}">
-                                    <i class="bi bi-box-arrow-in-right fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Sign-up
-                                </a>
-                            </li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li>
-                                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">
-                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Logout
-                                </a>
-                            </li>
-                        </ul>
-
-
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle d-flex align-items-center px-lg-3 py-3 py-lg-4" href="#"
+                        id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-user fa-lg text-white me-2"></i>
+                        <span class="text-white">NAMA SAYA</span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="userDropdown">
+                        <li>
+                            <a class="dropdown-item" href="#">
+                                <i class="fas fa-user fa-sm fa-fw me-2 text-gray-400"></i>
+                                Profile
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{{ url('/login') }}">
+                                <i class="bi bi-box-arrow-in-right fa-sm fa-fw me-2 text-gray-400"></i>
+                                Sign-in
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{{ url('/register') }}">
+                                <i class="bi bi-box-arrow-in-right fa-sm fa-fw me-2 text-gray-400"></i>
+                                Sign-up
+                            </a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">
+                                <i class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>
+                                Logout
+                            </a>
+                        </li>
+                    </ul>
                 </li>
-
             </ul>
         </div>
     </div>
-
-    
 </nav>
+
+<!-- Logout Modal-->
+<div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="logoutModalLabel">Ready to Leave?</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Select "Logout" below if you are ready to end your current session.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <a class="btn btn-primary" href="{{ url('/logout') }}">Logout</a>
+      </div>
+    </div>
+  </div>
+</div>
