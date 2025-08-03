@@ -4,7 +4,7 @@
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <ul class="list-inline text-center mb-4">
                     <li class="list-inline-item mx-2">
-                        <a href="https://www.instagram.com/smakenza.smatic/" class="text-decoration-none">
+                        <a href="https://www.instagram.com/smakenza.smatic/" target="_blank" class="text-decoration-none">
                             <div class="d-inline-flex align-items-center justify-content-center rounded-circle bg-dark text-white"
                                 style="width: 50px; height: 50px; transition: all 0.3s ease;">
                                 <i class="fab fa-instagram fa-lg"></i>
@@ -12,7 +12,7 @@
                         </a>
                     </li>
                     <li class="list-inline-item mx-2">
-                        <a href="https://www.youtube.com/@smkn1bpn" class="text-decoration-none">
+                        <a href="https://www.youtube.com/@smkn1bpn" target="_blank" class="text-decoration-none">
                             <div class="d-inline-flex align-items-center justify-content-center rounded-circle bg-danger text-white"
                                 style="width: 50px; height: 50px; transition: all 0.3s ease;">
                                 <i class="fab fa-youtube fa-lg"></i>
@@ -20,7 +20,7 @@
                         </a>
                     </li>
                     <li class="list-inline-item mx-2">
-                        <a href="https://github.com/" class="text-decoration-none">
+                        <a href="https://github.com/" target="_blank"class="text-decoration-none">
                             <div class="d-inline-flex align-items-center justify-content-center rounded-circle bg-secondary text-white"
                                 style="width: 50px; height: 50px; transition: all 0.3s ease;">
                                 <i class="fab fa-github fa-lg"></i>
