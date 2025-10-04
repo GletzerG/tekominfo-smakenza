@@ -322,7 +322,7 @@
                     <ul class="dropdown-menu" aria-labelledby="konsentrasiDropdown">
                         <li>
                             <a class="dropdown-item" href="{{ url('/pplg') }}">
-                                Pengembangan Perangkat Lunak dan Gim
+                                Rekayasa Perangkat Lunak
                             </a>
                         </li>
                         <li>
