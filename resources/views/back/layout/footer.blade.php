@@ -29,7 +29,7 @@
                     </li>
                 </ul>
                 <div class="small text-center text-muted fst-italic">
-                    Copyright &copy; Your Website 2023
+                    Copyright &copy; <href href="https://www.instagram.com/gletzerg/" >Gletzer Julio Ivanees</a> 2025
                 </div>
             </div>
         </div>

@@ -270,13 +270,7 @@
         transition: width 0.3s ease;
     }
 
-    .rotate-arrow {
-    transition: transform 0.3s ease;
-}
 
-.show > a > .rotate-arrow {
-    transform: rotate(180deg);
-}
 
 </style>
 

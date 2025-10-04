@@ -107,7 +107,7 @@
         }
     }
 </style>
-@endpush
+
 
 
 @section('content')
@@ -202,7 +202,7 @@
 
 @section('title', 'Profil GTK')
 
-@push('styles')
+
     <style>
         body {
             background: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
@@ -303,7 +303,7 @@
             }
         }
     </style>
-@endpush
+
 
 @section('content')
     <div class="container py-4">
@@ -397,3 +397,4 @@
         </div>
     </div>
 @endsection
+    
