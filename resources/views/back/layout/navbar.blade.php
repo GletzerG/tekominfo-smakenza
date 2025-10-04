@@ -24,7 +24,7 @@
         align-items: center;
         font-weight: 700;
         font-size: 1.5rem;
-        color: #00f7e2 !important;
+        color: #ffffff !important;
         text-decoration: none;
         padding: 0.75rem 0;
         transition: all 0.3s ease;
@@ -32,7 +32,7 @@
 
     .navbar-brand:hover {
         transform: translateY(-2px);
-        color: rgb(19,45,31) !important;
+        color: rgb(0, 255, 119) !important;
     }
 
     .navbar-brand img {
