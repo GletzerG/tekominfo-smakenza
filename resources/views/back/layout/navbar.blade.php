@@ -334,19 +334,48 @@
                 </li>
 
                 <!-- USER -->
+
+                @auth
+                <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle d-flex align-items-center px-lg-3 py-3 py-lg-4" href="#"
+                    id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fas fa-user fa-lg text-white me-2"></i>
+                    <span class="text-white">{{ Auth::user()->name ?? 'guest' }}</span>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="userDropdown">
+                    <li>
+                        <a class="dropdown-item" href="#">
+                            <i class="fas fa-user fa-sm fa-fw me-2 text-gray-400"></i>
+                            Profile
+                        </a>
+                    </li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li>
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <button type="submit" class="dropdown-item">
+                                <i class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>
+                                Logout
+                            </button>
+                        </form>
+                        
+                    </li>
+                </ul>
+            </li>
+                @endauth
+
+
+                @guest
+                <!--
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle d-flex align-items-center px-lg-3 py-3 py-lg-4" href="#"
-                        id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        id="guestDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fas fa-user fa-lg text-white me-2"></i>
-                        <span class="text-white">NAMA SAYA</span>
+                        <span class="text-white">Account</span>
                     </a>
-                    <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="userDropdown">
-                        <li>
-                            <a class="dropdown-item" href="#">
-                                <i class="fas fa-user fa-sm fa-fw me-2 text-gray-400"></i>
-                                Profile
-                            </a>
-                        </li>
+                    <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="guestDropdown">
                         <li>
                             <a class="dropdown-item" href="{{ url('/login') }}">
                                 <i class="bi bi-box-arrow-in-right fa-sm fa-fw me-2 text-gray-400"></i>
@@ -355,21 +384,14 @@
                         </li>
                         <li>
                             <a class="dropdown-item" href="{{ url('/register') }}">
-                                <i class="bi bi-box-arrow-in-right fa-sm fa-fw me-2 text-gray-400"></i>
+                                <i class="bi bi-person-plus fa-sm fa-fw me-2 text-gray-400"></i>
                                 Sign-up
-                            </a>
-                        </li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">
-                                <i class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>
-                                Logout
                             </a>
                         </li>
                     </ul>
                 </li>
+            -->
+                @endguest
             </ul>
         </div>
     </div>
