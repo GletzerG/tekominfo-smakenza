@@ -28,6 +28,7 @@
 }
 
 .hero-section::before {
+    
     content: '';
     position: absolute;
     top: 0;
@@ -39,6 +40,7 @@
         radial-gradient(circle at 85% 50%, rgba(255, 235, 59, 0.3) 0%, transparent 50%),
         radial-gradient(circle at 50% 50%, rgba(139, 195, 74, 0.2) 0%, transparent 50%);
     opacity: 0.7;
+    
 }
 
 .hero-section::after {
