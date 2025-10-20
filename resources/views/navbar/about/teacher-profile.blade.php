@@ -63,6 +63,7 @@
     }
 
     .card-body {
+        
         padding: 20px;
         font-size: 0.95rem;
         overflow-y: auto;
@@ -102,6 +103,7 @@
         }
 
         .teacher-info strong {
+            
             color: #2d3748;
             font-weight: 600;
         }
@@ -205,109 +207,110 @@
 
     <style>
         body {
-            background: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+    background: linear-gradient(135deg, #eef2f3 0%, #ffffff 100%);
+    font-family: 'Poppins', sans-serif;
+    color: #2d3436;
+    margin: 0;
+    padding: 0;
+}
 
-        .teacher-heading {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: #2c3e50;
-            margin: 0 auto 70px auto;
-            text-align: center;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-            border-bottom: 3px solid #2c3e50;
-            padding-bottom: 10px;
-            display: block;
-        }
+.teacher-hero {
+    
+    text-align: center;
+    padding: 60px 20px 20px;
+    background: linear-gradient(120deg, #009b2f, #9fb845);
+    color: #fff;
+    border-radius: 0 0 40px 40px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
 
-        .konten {
-            margin-left: 8px;
-            /* Kamu bisa sesuaikan misalnya 10px atau lebih */
-        }
+.teacher-hero h1 {
+    font-size: 2.7rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
 
-        .teacher-card {
-            display: flex;
-            flex-direction: row;
-            align-items: stretch;
-            border-radius: 20px;
-            overflow: hidden;
-            background: rgba(255, 255, 255, 0.75);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
-            min-height: 200px;
-        }
+.teacher-hero p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
 
-        .teacher-card:hover {
-            transform: scale(1.015);
-            box-shadow: 0 14px 35px rgba(0, 0, 0, 0.12);
-        }
+.teacher-card {
+    display: flex;
+    flex-direction: row;
+    border-radius: 18px;
+    background: linear-gradient(135deg, rgba(205, 255, 80, 0.7), rgb(65, 175, 67));
+    backdrop-filter: blur(15px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    border: 1px solid rgba(255,255,255,0.4);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    min-height: 200px;
+    margin-top: 30px;
+}
 
-        .teacher-img {
-            width: 150px;
-            height: auto;
-            object-fit: cover;
-            border-top-left-radius: 20px;
-            border-bottom-left-radius: 20px;
-        }
+.teacher-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 18px 30px rgba(0,0,0,0.1);
+    border-color: rgba(173,216,230,0.6);
+}
 
-        .card-body {
-            padding: 20px;
-            font-size: 1rem;
-            width: 100%;
-            color: #34495e;
-        }
+.teacher-img {
+    width: 150px;
+    object-fit: cover;
+    border-right: 3px solid #f1f1f1;
+    transition: transform 0.4s ease;
+}
 
-        .teacher-info {
-            display: flex;
-            margin-bottom: 10px;
-            border-bottom: 1px solid #ccc;
-            padding-bottom: 5px;
-        }
+.teacher-card:hover .teacher-img {
+    transform: scale(1.05);
+}
 
-        .teacher-info strong {
-            width: 180px;
-            color: #2c3e50;
-            font-weight: 600;
-            display: inline-block;
-        }
+.card-body {
 
-        .teacher-info span {
-            flex: 1;
-        }
+    padding: 20px 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 25px; 
+}
 
-        @media (max-width: 400px) {
-            .teacher-card {
-                flex-direction: column;
-            }
+.teacher-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    font-size: 1rem;
+    
+}
 
-            .teacher-img {
-                width: 100%;
-                height: 250px;
-                border-radius: 20px 20px 0 0;
-            }
+.teacher-info strong {
+    width: 110px;
+    color: #34495e;
+}
 
-            .teacher-info {
-                flex-direction: column;
-            }
+.teacher-info span {
+    font-weight: 500;
 
-            .teacher-info strong {
-                width: auto;
-            }
+}
 
-            .teacher-info span {
-                width: auto;
-            }
-        }
+@media (max-width: 576px) {
+
+    .teacher-info{
+        font-size: 0.8rem;
+
+    }
+
+}
+
     </style>
 
 
 @section('content')
     <div class="container py-4">
-        <h1 class="teacher-heading">Profil GTK</h1>
+       <section class="teacher-hero">
+    <h1>Profil Guru dan Tenaga Kependidikan</h1>
+    <p>Kenali sosok inspiratif di balik pendidikan terbaik kami.</p>
+</section>
 
         <div class="row row-cols-1 row-cols-md-2 g-4">
             <!-- Card Contoh -->
@@ -396,5 +399,8 @@
 
         </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
 @endsection
     

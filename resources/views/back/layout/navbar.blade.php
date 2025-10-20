@@ -229,35 +229,62 @@
 
     /* Responsive */
     @media (max-width: 991.98px) {
-        .navbar-collapse {
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(20px);
-            margin-top: 1rem;
-            border-radius: 16px;
-            padding: 1rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .dropdown-menu {
-            position: static;
-            float: none;
-            width: auto;
-            margin-top: 0;
-            background: transparent;
-            border: none;
-            border-radius: 0;
-            box-shadow: none;
-            opacity: 1;
-            visibility: visible;
-            transform: none;
-            backdrop-filter: none;
-            padding: 0;
-        }
-
-        .dropdown-item {
-            padding-left: 2rem;
-        }
+    .navbar-collapse {
+        position: absolute;
+        top: 100%; /* tetap di bawah navbar */
+        right: 1rem; /* geser dikit dari kanan */
+        left: auto; /* biar gak full kiri */
+        width: auto; /* biar gak full 100% */
+        min-width: 250px; /* lebar minimal biar proporsional */
+        background: rgba(0, 40, 0, 0.7);
+        backdrop-filter: blur(25px);
+        -webkit-backdrop-filter: blur(25px);
+        border-radius: 16px;
+        padding: 1rem;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+        transition: all 0.5s ease;
+        z-index: 999;
     }
+
+    .navbar-nav {
+        align-items: flex-start;
+    }
+
+    .nav-item {
+        display: block;
+        width: 100%;
+    }
+
+    .nav-link {
+        display: block;
+        color: #fff !important;
+        font-weight: 600;
+        padding: 0.75rem 1rem !important;
+        border-radius: 8px;
+        transition: 0.1s;
+    }
+
+    .nav-link:hover {
+        background: rgba(255, 255, 255, 0.1);
+        color: #00ff88 !important;
+    }
+
+    .dropdown-menu {
+        background: rgba(0, 20, 0, 0.5);
+        backdrop-filter: blur(15px);
+        border-radius: 10px;
+        padding: 0.5rem 0;
+        border: none;
+    }
+
+    .dropdown-item {
+        color: white;
+    }
+}
+
+
+
+
 
     /* Scroll indicator */
     .scroll-indicator {
@@ -273,7 +300,47 @@
 
 
 </style>
-
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const dropdowns = document.querySelectorAll(".nav-item.dropdown");
+    
+        dropdowns.forEach(dropdown => {
+            const toggle = dropdown.querySelector(".dropdown-toggle");
+            const menu = dropdown.querySelector(".dropdown-menu");
+    
+            // Buka dropdown pas klik
+            toggle.addEventListener("click", function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                closeAllDropdowns(); // tutup dropdown lain
+                dropdown.classList.toggle("show");
+                menu.classList.toggle("show");
+            });
+    
+            // Tutup dropdown saat mouse keluar dari area
+            dropdown.addEventListener("mouseleave", function() {
+                dropdown.classList.remove("show");
+                menu.classList.remove("show");
+            });
+        });
+    
+        // Tutup semua dropdown kalau klik di luar navbar
+        document.addEventListener("click", function(e) {
+            if (!e.target.closest(".nav-item.dropdown")) {
+                closeAllDropdowns();
+            }
+        });
+    
+        function closeAllDropdowns() {
+            document.querySelectorAll(".nav-item.dropdown").forEach(d => {
+                d.classList.remove("show");
+                const m = d.querySelector(".dropdown-menu");
+                if (m) m.classList.remove("show");
+            });
+        }
+    });
+    </script>
+    
 <!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg" id="mainNav">
     <div class="container px-4 px-lg-5">
@@ -368,7 +435,7 @@
 
 
                 @guest
-         <!--
+         
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle d-flex align-items-center px-lg-3 py-3 py-lg-4" href="#"
                         id="guestDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -390,7 +457,7 @@
                         </li>
                     </ul>
                 </li>
-            -->
+        
                 @endguest
             </ul>
         </div>

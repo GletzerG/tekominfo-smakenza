@@ -25,6 +25,7 @@
     align-items: center;
     position: static;
     overflow: hidden;
+    margin-top:130px;
 }
 
 .hero-section::before {
@@ -54,6 +55,7 @@
 }
 
 .hero-content {
+   
     max-width: 700px;
     padding: 0 30px;
     position: relative;
@@ -483,65 +485,104 @@
 
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
-    .hero-title {
-        font-size: 2.2rem;
-    }
-
     .hero-section {
-        height: 60vh;
+        height: auto;
+        padding: 120px 20px 80px; /* lebih turun dan ada ruang bawah */
+        background-position: center;
+        text-align: center;
     }
 
-    .hero-content {
-        padding: 0 20px;
+    .hero-title {
+        font-size: 1.9rem;
+        line-height: 1.3;
     }
 
+    .hero-subtitle {
+        font-size: 1rem;
+        margin-bottom: 25px;
+        line-height: 1.6;
+    }
+
+    .cta-button {
+        padding: 12px 28px;
+        font-size: 0.95rem;
+    }
+
+    /* DESCRIPTION SECTION */
     .description-content {
         flex-direction: column;
         text-align: center;
-        gap: 30px;
+        gap: 25px;
+    }
+
+    .description-card {
+        padding: 25px 20px;
     }
 
     .description-image {
-        flex: none;
         width: 100%;
-        max-width: 280px;
-        height: 200px;
+        max-width: 320px;
+        height: 180px;
         margin: 0 auto;
     }
 
+    .description-text p {
+        font-size: 1rem;
+        line-height: 1.7;
+        text-align: justify; /* biar rapi di HP */
+    }
+
+    /* SECTION TITLES */
     .section-title {
-        font-size: 1.6rem;
+        font-size: 1.5rem;
+        justify-content: center;
+        text-align: center;
+        margin-bottom: 30px;
     }
 
     .section-title::after {
         display: none;
     }
 
-    .competency-grid {
-        grid-template-columns: 1fr;
-    }
-
+    /* COMPETENCY & JOB CARDS */
+    .competency-grid,
     .job-prospects {
         grid-template-columns: 1fr;
-    }
-
-    .main-content {
-        padding: 60px 0;
-    }
-
-    .section {
-        margin-bottom: 60px;
-    }
-
-    .description-card,
-    .partnership-card,
-    .quote-card {
-        padding: 30px;
+        gap: 25px;
+        margin-top: 20px;
     }
 
     .competency-card,
     .job-card {
-        padding: 30px;
+        padding: 25px;
+        text-align: left;
+    }
+
+    /* PARTNERSHIP & QUOTE */
+    .partnership-item {
+        display: block;
+        text-align: center;
+        margin: 10px auto;
+        padding: 12px 25px;
+        font-size: 0.9rem;
+    }
+
+    .quote-card {
+        padding: 30px 20px;
+    }
+
+    .quote-text {
+        font-size: 1.1rem;
+        line-height: 1.6;
+    }
+
+    /* GLOBAL SPACING */
+    .main-content {
+        padding: 50px 0;
+    }
+
+    .section {
+        margin-bottom: 50px;
     }
 }
 
@@ -730,5 +771,6 @@ html {
 
     // Banner scroll normal - tanpa efek parallax yang berat
 </script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 @endsection
