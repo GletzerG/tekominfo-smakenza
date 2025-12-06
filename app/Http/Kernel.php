@@ -6,6 +6,13 @@ use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
 {
+
+    // route for middleware
+    protected $routeMiddleware =[
+        'admin' => \App\Http\Middleware\AdminOnly::class,
+    ];
+
+    
     /**
      * The application's global HTTP middleware stack.
      *
@@ -29,6 +36,7 @@ class Kernel extends HttpKernel
      * @var array<string, array<int, class-string|string>>
      */
     protected $middlewareGroups = [
+        
         'web' => [
             \App\Http\Middleware\EncryptCookies::class,
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
