@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\BulkSiswaController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -10,7 +11,8 @@ Route::get('/', function () {
 
 // about
 Route::get('/visi-misi', fn() => view('navbar.about.visimisi'));
-Route::get('/teacher-profile', fn() => view('navbar.about.teacher-profile'));
+Route::get('/teacher-profile', [ProfileController::class, 'index']);
+
 
 // konsentrasi
 Route::get('/pplg', fn() => view('navbar.konsentrasi-keahlian.pplg'));
