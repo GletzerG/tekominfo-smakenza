@@ -87,10 +87,12 @@
     overflow: hidden;
     width: 70rem;
     flex-direction: row;
+    border-radius: 12px;
 }
 .card-p{
     min-width: 70rem;
     flex-shrink: 0;
+    border-radius: 12px;
 }
 
 .slider-btn{
@@ -186,8 +188,8 @@
     @endforeach
     </div>
 
-    <button class="slider-btn prev" onclick="prevSlide()">←</button>
-    <button class="slider-btn next" onclick="nextSlide()">→</button>
+    <button class="slider-btn prev" onclick="prevSlide()"><i class="fa-solid fa-angle-left"></i></button>
+    <button class="slider-btn next" onclick="nextSlide()"><i class="fa-solid fa-angle-right"></i></button>
 
     
 </div>

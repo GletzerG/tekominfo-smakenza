@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class siswa extends Model
 {
+    protected $table = 'siswa';
     use HasFactory;
     protected $fillable = [
         'user_id', 

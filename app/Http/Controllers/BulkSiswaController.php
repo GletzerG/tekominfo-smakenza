@@ -38,6 +38,8 @@ class BulkSiswaController extends Controller
                 $name = trim($cols[1] ?? 'Siswa '.$nis);
                 $email = trim($cols[2] ?? strtolower($nis).'@siswa.local');
                 $passwordPlain = trim($cols[3] ?? '');
+                $kelas = trim($cols[4] ?? '');
+                $jurusan = trim($cols[5] ?? '');
                 $passwordHash = Hash::make($passwordPlain);
     
                 // INSERT USERS
@@ -55,6 +57,8 @@ class BulkSiswaController extends Controller
                     'user_id' => $userId,
                     'nis' => $nis,
                     'name' => $name,
+                    'kelas' => $kelas,
+                    'jurusan' => $jurusan,
                     'created_at' => $now,
                     'updated_at' => $now,
                 ]);

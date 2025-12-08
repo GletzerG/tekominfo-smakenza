@@ -1,7 +1,7 @@
+
+
+
 <form method="POST" action="{{ route('bulk.register') }}" enctype="multipart/form-data">
-
-
-
   <!DOCTYPE html>
 <html lang="en">
 <head>

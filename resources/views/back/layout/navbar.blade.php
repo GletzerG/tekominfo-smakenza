@@ -380,6 +380,8 @@
                     </ul>
                 </li>
 
+                
+
                 <!-- KONSENTRASI -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle px-lg-3 py-3 py-lg-4" href="#" id="konsentrasiDropdown"
@@ -400,6 +402,43 @@
                     </ul>
                 </li>
 
+                <!--akses guru-->
+                @auth
+                @if(auth()->user()->role === 'guru' || auth()->user()->role === 'admin')
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle px-lg-3 py-3 py-lg-4" href="#" id="guruDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Data Siswa <i class="fas fa-chevron-down ms-1"></i>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="guruDropdown">
+                        <li>
+                            <a class="dropdown-item" href="{{ url('/absensi') }}">
+                                <i class="fa-solid fa-calendar me-2"></i> absensi
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="/teacher-profile">
+                             <i class="fa-solid fa-star fa-sm fa-fw me-2 text-gray-400"></i> poin siswa
+                            </a>
+                        </li>
+                        <!-- admin akses -->
+                    @auth
+                    @if(auth()->user()->role === 'admin')
+                        <li>
+                            <a class="dropdown-item" href="/bulk_register">
+                                <i class="fa-solid fa-user-plus"></i> tambah siswa
+                            </a>
+                        </li>
+                        @endif
+                        @endauth
+                    </ul>
+                </li>
+                @endif
+                @endauth
+                
+                
+
+
                 <!-- USER -->
 
                 @auth
@@ -416,6 +455,16 @@
                             Profile
                         </a>
                     </li>
+                    @auth
+                    @if(auth()->user()->role === 'admin' || auth()->user()->role === 'siswa')
+                    <li>
+                        <a class="dropdown-item" href="#">
+                            <i class="fa-solid fa-star fa-sm fa-fw me-2 text-gray-400"></i>
+                            poin anda
+                        </a>
+                    </li>
+                    @endif
+                    @endauth
                     <li>
                         <hr class="dropdown-divider">
                     </li>
