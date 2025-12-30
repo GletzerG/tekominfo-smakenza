@@ -3,6 +3,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\BulkSiswaController;
 use App\Http\Controllers\AbsensiController;
+use App\Http\Controllers\DataAbsensiController;
+use App\Http\Controllers\poin_siswaController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -26,8 +28,25 @@ Route::post('/login', [AuthController::class, 'login'])->name('login.post');
 Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
 Route::post('/register', [AuthController::class, 'register'])->name('register.post');
 
-Route::get('/absensi', [AbsensiController::class, 'index']);
-Route::post('/absensi', [AbsensiController::class, 'store']);
+
+
+Route::middleware(['auth', 'role:admin,guru'])->group(function () {
+    Route::get('/absensi', [AbsensiController::class, 'index']);
+    Route::post('/absensi', [AbsensiController::class, 'store']);
+    
+    Route::get('/data_absen', [DataAbsensiController::class, 'monitoring']);
+    Route::post('/data_absen', [DataAbsensiController::class, 'monitoring']);
+});
+Route::middleware(['auth', 'role:admin,guru'])->group(function () {
+    Route::get('/poin_siswa', [poin_siswaController::class, 'index']);
+    Route::post('/poin_siswa', [poin_siswaController::class, 'store']);
+});
+
+Route::middleware(['auth', 'role:admin'])->group(function () {
+    //route for adding siswa with table excel
+    Route::get('/bulk_register', [BulkSiswaController::class, 'showForm']);
+    Route::post('/bulk_register', [BulkSiswaController::class, 'import'])->name('bulk.register');
+});
 
 
 
@@ -35,8 +54,3 @@ Route::post('/absensi', [AbsensiController::class, 'store']);
 
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::middleware(['auth', 'admin'])->group(function(){
-    //route for adding siswa with table excel
-    Route::get('/bulk_register', [BulkSiswaController::class, 'showForm']);
-    Route::post('/bulk_register', [BulkSiswaController::class, 'import'])->name('bulk.register');
-});

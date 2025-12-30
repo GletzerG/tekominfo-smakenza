@@ -6,11 +6,13 @@ use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
 {
-
+ 
     // route for middleware
     protected $routeMiddleware =[
-        'admin' => \App\Http\Middleware\AdminOnly::class,
+        'role' => \App\Http\Middleware\AdminOnly::class,
+        
     ];
+
 
     
     /**

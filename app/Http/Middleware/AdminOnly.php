@@ -14,16 +14,17 @@ class AdminOnly
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next): Response
-    {
-        if (!Auth::check()){
-            return redirect('/login');
-
-        }
-
-        if (Auth::user()->role !== 'admin'){
-            abort(403, 'This site is only intended for admins');
-        }
-        return $next($request);
+    public function handle($request, \Closure $next, ...$roles)
+{
+    if (!auth()->check()) {
+        abort(403);
     }
+
+    if (!in_array(auth()->user()->role, $roles)) {
+        abort(403, 'Tidak punya akses!');
+    }
+
+    return $next($request);
+}
+
 }

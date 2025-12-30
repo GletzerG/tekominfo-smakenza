@@ -8,7 +8,7 @@
         text-align: center
     }
     h2{
-        margin-left: 25rem;
+        margin-left: 30rem;
     }
 .absensi-container{
     margin: 0;
@@ -103,92 +103,106 @@ button{
 /* kolom NO (kolom ke-1) */
 .absen-table th:nth-child(1),
 .absen-table td:nth-child(1) {
-    width: 10%;       /* kecilin */
+    width: 60px;       /* kecilin */
     text-align: center;
 }
 
 /* kolom NAMA (kolom ke-2) */
 .absen-table th:nth-child(2),
 .absen-table td:nth-child(2) {
-    width: 30%;
+    width: 50%;
 }
 
 /* kolom STATUS (kolom ke-3) */
 .absen-table th:nth-child(3),
 .absen-table td:nth-child(3) {
-    text-align: center;
     width: 20%;
 }
-.absen-table th:nth-child(4),
-.absen-table td:nth-child(4) {
-    text-align: center;
+
+.tombol-absen a{
+    text-decoration: none;
+    background-color: rgb(90, 213, 74);
+    padding: 0.5rem;
+    border-radius: 10%;
+    color: rgb(255, 255, 255);
+    
 
 }
+.tombol-absen a:hover{
 
+    color: rgb(255, 255, 255);
 
-
-.poin-siswa{
-    text-align: center;
-    align-items: center;
-
-}
-
-.btn-poin {
-    padding: 6px 12px;
-    font-size: 18px;
-    border-radius: 6px;
-    cursor: pointer;
-}
-
-.btn-poin.plus {
-    background-color: #2ecc71;
-    color: white;
-}
-
-.btn-poin.minus {
-    background-color: #e74c3c;
-    color: white;
 }
 
 </style>
 
 <div class="absensi-container">
 <!-- absensi fitur -->
-<h2>Poin Siswa</h2>
+<h2>Data Absensi Siswa</h2>
 
-<form id="absensiForm" class="absensi-form" action="/poin_siswa" method="POST">
+<form id="absensiForm" class="absensi-form" action="/data_absen" method="POST">
     @csrf
     <div class="absensi-wrapper">
+
+        <div style="margin-left:2rem; margin-bottom:10px;">
+            <form method="GET">
+                <label><b>Pilih Tanggal:</b></label><br>
+                <input type="date" name="tanggal" value="{{ request('tanggal') ?? date('Y-m-d') }}" onchange="this.form.submit()">
+            </form>
+        </div>
+
+
     <div class="table-scroll">
     <table cellpadding="10" class="absen-table">
         <tr>
             <th>No</th>
             <th>Nama</th>
-            <th>poin saat ini</th>
-            <th>edit poin</th>
+            <th>Status</th>
+            <th>Surat</th>
+            
         </tr>
 
-        @foreach($siswa as $s)
+        @forelse($siswa as $s)
         <tr>
             <td>{{ $loop->iteration }}</td> 
             <td>{{ $s->name }}</td>
-            <td>{{ $s->poin }}</td>
+         @php
+    $absen = $s->absensi
+        ->where('tanggal', request('tanggal') ?? date('Y-m-d'))
+        ->first();
+@endphp
 
-            <td class="poin-button">
-                <button type="button" class="btn-poin minus" onclick="editpoin(this, -1)">−</button>
-                <span class="poin-status">0</span>
-                <button type="button" class="btn-poin plus" onclick="editpoin(this, 1)">+</button>
+<td>
+    @if($absen)
+        <span style="font-weight:bold;">
+            {{ strtoupper($absen->status) }}
+        </span>
+    @else
+        <small style="color:gray;">Belum diabsen</small>
+    @endif
+</td>
 
-                    <!-- hidden input untuk kirim delta -->
-                <input type="hidden" 
-                name="poin_delta[{{ $s->id }}]" 
-                value="0" 
-                class="poin-delta">
-            </td>
+<td>
+    @if($absen && $absen->surat)
+        <a href="{{ asset('storage/'.$absen->surat) }}" target="_blank">
+            📄 Lihat Surat
+        </a>
+    @else
+        <small style="color:gray;">Tidak ada surat</small>
+    @endif
+</td>
 
-            </div>
+@empty
+<tr>
+        <td colspan="3" style="text-align:center;color:gray;">
+        Belum ada data absensi untuk hari ini
+        </td>
         </tr>
-        @endforeach
+            
+        </tr>
+   
+        
+@endforelse
     </table> 
     </div>   
 </form>
@@ -233,9 +247,13 @@ button{
         </div>
     </form>
 
+
+        <div class="tombol-absen">
+            <a href="/absensi">Absen harian</a>
+            <a href="/data_absen">Lihat absen</a>
+        </div>
 </div>
 <script>
-    
 function submitFilter(){
     document.getElementById('filterForm').submit();
 }
@@ -250,49 +268,11 @@ function setAllStatus() {
         }
     });
 }
-
-
-  function ubahStatus(btn, nilai) {
-    let span = btn.parentElement.querySelector('.poin-status');
-    let poin = parseInt(span.innerText);
-
-    poin += nilai;
-
-    if (poin > 0) {
-      span.innerText = "+" + poin;
-    } else {
-      span.innerText = poin; // otomatis minus kalau negatif
-    }
-  }
-
-
-  function editpoin(btn, nilai) {
-    let td = btn.parentElement;
-    let span = td.querySelector('.poin-status');
-    let input = td.querySelector('.poin-delta');
-
-    let poin = parseInt(input.value);
-    poin += nilai;
-
-    input.value = poin;
-
-    if (poin > 0) {
-        span.innerText = "+" + poin;
-        span.style.color = "green";
-    } else if (poin < 0) {
-        span.innerText = poin;
-        span.style.color = "red";
-    } else {
-        span.innerText = "0";
-        span.style.color = "black";
-    }
-}
-
 </script>
 
 </div>
 
-<button type="submit" form="absensiForm"><i class="fa-solid fa-floppy-disk"></i> Simpan poin siswa</button>
+
 
 
 

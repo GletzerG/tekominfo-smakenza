@@ -417,10 +417,11 @@
                             </a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="/teacher-profile">
+                            <a class="dropdown-item" href="/poin_siswa">
                              <i class="fa-solid fa-star fa-sm fa-fw me-2 text-gray-400"></i> poin siswa
                             </a>
                         </li>
+
                         <!-- admin akses -->
                     @auth
                     @if(auth()->user()->role === 'admin')

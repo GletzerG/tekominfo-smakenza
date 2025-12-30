@@ -18,6 +18,11 @@ class siswa extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
+
+    public function absensi()
+{
+    return $this->hasMany(\App\Models\Absensi::class, 'siswa_id');
+}
         
     
 }
