@@ -2,6 +2,7 @@
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -25,3 +26,16 @@ Route::post('/register', [AuthController::class, 'register'])->name('register.po
 // LOGOUT
 
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+// prifle
+Route::middleware('auth')->controller(ProfileController::class)->group(function () {
+    Route::get('/profile', 'index')->name('profile.index');
+    Route::get('/profile/edit', 'edit')->name('profile.edit');
+    Route::match(['patch', 'put'], '/profile', 'update')->name('profile.update');
+    Route::delete('/profile', 'destroy')->name('profile.destroy');
+    Route::post('/profile/update', 'updateProfile')->name('profile.update.custom');
+    Route::post('/profile/upload-avatar', 'uploadAvatar')->name('profile.upload-avatar');
+    Route::put('/profile/update-profile', 'updateProfile')->name('profile.updateProfile');
+    Route::get('/user/{id}', 'show')->name('user.show');
+    
+});
