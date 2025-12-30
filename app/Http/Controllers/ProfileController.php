@@ -14,116 +14,6 @@ use App\Models\Activity;
 class ProfileController extends Controller
 {
     /**
-     * Tampilkan form edit profile.
-     */
-    public function edit(Request $request): View
-    {
-        return view('profile.edit', [
-            'user' => $request->user(),
-        ]);
-    }
-
-
-      public function show(): View
-    {
-        return view('user.profile', [
-            'user' => Auth::user(),
-        ]);
-    }
-    /**
-     * Update profil user (versi Laravel Breeze default).
-     */
- public function update(ProfileUpdateRequest $request): RedirectResponse
-{
-    $user = $request->user();
-
-    try {
-        // Handle avatar upload first
-        if ($request->hasFile('avatar')) {
-            $avatarFile = $request->file('avatar');
-            
-            // Validate file
-            if (!$avatarFile->isValid()) {
-                return Redirect::route('profile.edit')
-                    ->withErrors(['avatar' => 'File avatar tidak valid atau rusak.']);
-            }
-
-            // Delete old avatar if exists
-            if ($user->avatar) {
-                Storage::delete('public/' . $user->avatar);
-            }
-
-            // Store new avatar with error handling
-            try {
-                $avatarPath = $avatarFile->store('avatars', 'public');
-                if (!$avatarPath) {
-                    throw new \Exception('Gagal menyimpan file avatar');
-                }
-                $user->avatar = $avatarPath;
-            } catch (\Exception $e) {
-                \Log::error('Avatar upload failed: ' . $e->getMessage());
-                return Redirect::route('profile.edit')
-                    ->withErrors(['avatar' => 'Gagal mengupload avatar. Silakan coba lagi.']);
-            }
-        }
-
-        // Handle other fields
-        $validatedData = $request->validated();
-
-        // Remove avatar from validated data since we handled it separately
-        unset($validatedData['avatar']);
-
-        // Handle skills - convert array to JSON if needed
-        if (isset($validatedData['skills']) && is_array($validatedData['skills'])) {
-            $validatedData['skills'] = json_encode($validatedData['skills']);
-        }
-
-        $user->fill($validatedData);
-
-        if ($user->isDirty('email')) {
-            $user->email_verified_at = null;
-        }
-
-        $user->save();
-
-        // Log activity
-        Activity::create([
-            'user_id' => $user->id,
-            'action' => 'Updated profile information',
-            'type' => 'info'
-        ]);
-
-        return Redirect::route('profile.edit')->with('status', 'profile-updated');
-
-    } catch (\Exception $e) {
-        \Log::error('Profile update failed: ' . $e->getMessage());
-        return Redirect::route('profile.edit')
-            ->withErrors(['general' => 'Terjadi kesalahan saat memperbarui profil. Silakan coba lagi.']);
-    }
-}
-
-    /**
-     * Hapus akun user.
-     */
-    public function destroy(Request $request): RedirectResponse
-    {
-        $request->validateWithBag('userDeletion', [
-            'password' => ['required', 'current_password'],
-        ]);
-
-        $user = $request->user();
-
-        Auth::logout();
-
-        $user->delete();
-
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-
-        return Redirect::to('/');
-    }
-
-    /**
      * Dashboard profile user.
      */
     public function index(): View
@@ -142,6 +32,70 @@ class ProfileController extends Controller
             ->get();
 
         return view('profile.edit', compact('user', 'stats', 'activities'));
+    }
+
+    /**
+     * Tampilkan form edit profile.
+     */
+    public function edit(Request $request): View
+    {
+        return view('profile.edit', [
+            'user' => $request->user(),
+        ]);
+    }
+
+    /**
+     * Tampilkan profile user.
+     */
+    public function show(): View
+    {
+        return view('user.profile', [
+            'user' => Auth::user(),
+        ]);
+    }
+
+    /**
+     * Update profil user.
+     */
+    public function update(ProfileUpdateRequest $request): RedirectResponse
+    {
+        $user = $request->user();
+
+        try {
+            // Handle avatar upload first
+            if ($request->hasFile('avatar')) {
+                $this->handleAvatarUpload($request, $user);
+            }
+
+            // Handle other fields
+            $validatedData = $request->validated();
+
+            // Remove avatar from validated data since we handled it separately
+            unset($validatedData['avatar']);
+
+            // Handle skills - convert array to JSON if needed
+            if (isset($validatedData['skills']) && is_array($validatedData['skills'])) {
+                $validatedData['skills'] = json_encode($validatedData['skills']);
+            }
+
+            $user->fill($validatedData);
+
+            if ($user->isDirty('email')) {
+                $user->email_verified_at = null;
+            }
+
+            $user->save();
+
+            // Log activity
+            $this->logActivity($user->id, 'Updated profile information');
+
+            return Redirect::route('profile.edit')->with('status', 'profile-updated');
+
+        } catch (\Exception $e) {
+            \Log::error('Profile update failed: ' . $e->getMessage());
+            return Redirect::route('profile.edit')
+                ->withErrors(['general' => 'Terjadi kesalahan saat memperbarui profil. Silakan coba lagi.']);
+        }
     }
 
     /**
@@ -165,31 +119,7 @@ class ProfileController extends Controller
         try {
             // Handle avatar upload
             if ($request->hasFile('avatar')) {
-                $avatarFile = $request->file('avatar');
-                
-                // Validate file
-                if (!$avatarFile->isValid()) {
-                    return redirect()->route('profile.index')
-                        ->withErrors(['avatar' => 'File avatar tidak valid atau rusak.']);
-                }
-
-                // Delete old avatar if exists
-                if ($user->avatar) {
-                    Storage::delete('public/' . $user->avatar);
-                }
-
-                // Store new avatar with error handling
-                try {
-                    $avatarPath = $avatarFile->store('avatars', 'public');
-                    if (!$avatarPath) {
-                        throw new \Exception('Gagal menyimpan file avatar');
-                    }
-                    $user->avatar = $avatarPath;
-                } catch (\Exception $e) {
-                    \Log::error('Avatar upload failed in updateProfile: ' . $e->getMessage());
-                    return redirect()->route('profile.index')
-                        ->withErrors(['avatar' => 'Gagal mengupload avatar. Silakan coba lagi.']);
-                }
+                $this->handleAvatarUpload($request, $user);
             }
 
             // Prepare data for update
@@ -204,11 +134,7 @@ class ProfileController extends Controller
 
             $user->update($updateData);
 
-            Activity::create([
-                'user_id' => $user->id,
-                'action' => 'Updated profile information',
-                'type' => 'info'
-            ]);
+            $this->logActivity($user->id, 'Updated profile information');
 
             return redirect()->route('profile.index')
                 ->with('success', 'Profile berhasil diupdate!');
@@ -221,7 +147,7 @@ class ProfileController extends Controller
     }
 
     /**
-     * Upload avatar saja.
+     * Upload avatar saja (AJAX).
      */
     public function uploadAvatar(Request $request)
     {
@@ -244,49 +170,15 @@ class ProfileController extends Controller
         }
 
         try {
-            $avatarFile = $request->file('avatar');
-            
-            // Validate file
-            if (!$avatarFile->isValid()) {
-                return response()->json([
-                    'success' => false,
-                    'message' => 'File avatar tidak valid atau rusak.'
-                ], 400);
-            }
+            $avatarPath = $this->handleAvatarUpload($request, $user);
 
-            // Delete old avatar if exists
-            if ($user->avatar) {
-                Storage::delete('public/' . $user->avatar);
-            }
+            $this->logActivity($user->id, 'Updated profile picture');
 
-            // Store new avatar with error handling
-            try {
-                $avatarPath = $avatarFile->store('avatars', 'public');
-                if (!$avatarPath) {
-                    throw new \Exception('Gagal menyimpan file avatar');
-                }
-                
-                $user->update(['avatar' => $avatarPath]);
-
-                Activity::create([
-                    'user_id' => $user->id,
-                    'action' => 'Updated profile picture',
-                    'type' => 'info'
-                ]);
-
-                return response()->json([
-                    'success' => true,
-                    'message' => 'Avatar berhasil diupload!',
-                    'avatar_url' => Storage::url($avatarPath)
-                ]);
-
-            } catch (\Exception $e) {
-                \Log::error('Avatar upload failed in uploadAvatar: ' . $e->getMessage());
-                return response()->json([
-                    'success' => false,
-                    'message' => 'Gagal mengupload avatar. Silakan coba lagi.'
-                ], 500);
-            }
+            return response()->json([
+                'success' => true,
+                'message' => 'Avatar berhasil diupload!',
+                'avatar_url' => Storage::url($avatarPath)
+            ]);
 
         } catch (\Exception $e) {
             \Log::error('Avatar upload process failed: ' . $e->getMessage());
@@ -296,5 +188,67 @@ class ProfileController extends Controller
             ], 500);
         }
     }
-}
 
+    /**
+     * Hapus akun user.
+     */
+    public function destroy(Request $request): RedirectResponse
+    {
+        $request->validateWithBag('userDeletion', [
+            'password' => ['required', 'current_password'],
+        ]);
+
+        $user = $request->user();
+
+        Auth::logout();
+
+        $user->delete();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return Redirect::to('/');
+    }
+
+    /**
+     * Helper method untuk handle avatar upload.
+     */
+    private function handleAvatarUpload(Request $request, $user): string
+    {
+        $avatarFile = $request->file('avatar');
+
+        // Validate file
+        if (!$avatarFile->isValid()) {
+            throw new \Exception('File avatar tidak valid atau rusak.');
+        }
+
+        // Delete old avatar if exists
+        if ($user->avatar) {
+            Storage::delete('public/' . $user->avatar);
+        }
+
+        // Store new avatar
+        $avatarPath = $avatarFile->store('avatars', 'public');
+
+        if (!$avatarPath) {
+            throw new \Exception('Gagal menyimpan file avatar');
+        }
+
+        $user->avatar = $avatarPath;
+        $user->save();
+
+        return $avatarPath;
+    }
+
+    /**
+     * Helper method untuk log activity.
+     */
+    private function logActivity(int $userId, string $action): void
+    {
+        Activity::create([
+            'user_id' => $userId,
+            'action' => $action,
+            'type' => 'info'
+        ]);
+    }
+}

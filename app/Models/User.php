@@ -19,6 +19,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+<<<<<<< HEAD
         'role',
         'is_verified',
         'phone',
@@ -37,6 +38,9 @@ class User extends Authenticatable
         'completed_tasks',
         'total_hours',
         'achievements',
+=======
+        'role'
+>>>>>>> 35b9397e4565373c91cf8c37f3751f0aff7645c3
     ];
 
     /**
@@ -59,6 +63,7 @@ class User extends Authenticatable
         'is_verified' => 'boolean',
     ];
 
+<<<<<<< HEAD
     /**
      * Mengambil URL avatar user.
      */
@@ -95,5 +100,9 @@ class User extends Authenticatable
     public function activities()
     {
         return $this->hasMany(Activity::class, 'user_id');
+=======
+    public function siswa() {
+        return $this->hasOne(siswa::class);
+>>>>>>> 35b9397e4565373c91cf8c37f3751f0aff7645c3
     }
 }

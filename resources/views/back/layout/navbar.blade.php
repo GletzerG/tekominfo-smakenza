@@ -248,6 +248,7 @@
 
     /* Responsive */
     @media (max-width: 991.98px) {
+<<<<<<< HEAD
         .navbar-collapse {
             background: rgba(255, 255, 255, 0.98);
             backdrop-filter: blur(20px);
@@ -280,7 +281,64 @@
         .user-dropdown .nav-link {
             justify-content: center;
         }
+=======
+    .navbar-collapse {
+        position: absolute;
+        top: 100%; /* tetap di bawah navbar */
+        right: 1rem; /* geser dikit dari kanan */
+        left: auto; /* biar gak full kiri */
+        width: auto; /* biar gak full 100% */
+        min-width: 250px; /* lebar minimal biar proporsional */
+        background: rgba(0, 40, 0, 0.7);
+        backdrop-filter: blur(25px);
+        -webkit-backdrop-filter: blur(25px);
+        border-radius: 16px;
+        padding: 1rem;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+        transition: all 0.5s ease;
+        z-index: 999;
+>>>>>>> 35b9397e4565373c91cf8c37f3751f0aff7645c3
     }
+
+    .navbar-nav {
+        align-items: flex-start;
+    }
+
+    .nav-item {
+        display: block;
+        width: 100%;
+    }
+
+    .nav-link {
+        display: block;
+        color: #fff !important;
+        font-weight: 600;
+        padding: 0.75rem 1rem !important;
+        border-radius: 8px;
+        transition: 0.1s;
+    }
+
+    .nav-link:hover {
+        background: rgba(255, 255, 255, 0.1);
+        color: #00ff88 !important;
+    }
+
+    .dropdown-menu {
+        background: rgba(0, 20, 0, 0.5);
+        backdrop-filter: blur(15px);
+        border-radius: 10px;
+        padding: 0.5rem 0;
+        border: none;
+    }
+
+    .dropdown-item {
+        color: white;
+    }
+}
+
+
+
+
 
     /* Scroll indicator */
     .scroll-indicator {
@@ -353,7 +411,47 @@
         }
     }
 </style>
-
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const dropdowns = document.querySelectorAll(".nav-item.dropdown");
+    
+        dropdowns.forEach(dropdown => {
+            const toggle = dropdown.querySelector(".dropdown-toggle");
+            const menu = dropdown.querySelector(".dropdown-menu");
+    
+            // Buka dropdown pas klik
+            toggle.addEventListener("click", function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                closeAllDropdowns(); // tutup dropdown lain
+                dropdown.classList.toggle("show");
+                menu.classList.toggle("show");
+            });
+    
+            // Tutup dropdown saat mouse keluar dari area
+            dropdown.addEventListener("mouseleave", function() {
+                dropdown.classList.remove("show");
+                menu.classList.remove("show");
+            });
+        });
+    
+        // Tutup semua dropdown kalau klik di luar navbar
+        document.addEventListener("click", function(e) {
+            if (!e.target.closest(".nav-item.dropdown")) {
+                closeAllDropdowns();
+            }
+        });
+    
+        function closeAllDropdowns() {
+            document.querySelectorAll(".nav-item.dropdown").forEach(d => {
+                d.classList.remove("show");
+                const m = d.querySelector(".dropdown-menu");
+                if (m) m.classList.remove("show");
+            });
+        }
+    });
+    </script>
+    
 <!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg" id="mainNav">
     <div class="container px-4 px-lg-5">
@@ -393,6 +491,8 @@
                     </ul>
                 </li>
 
+                
+
                 <!-- KONSENTRASI -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle px-lg-3 py-3 py-lg-4" href="#" id="konsentrasiDropdown"
@@ -413,6 +513,47 @@
                     </ul>
                 </li>
 
+<<<<<<< HEAD
+=======
+                <!--akses guru-->
+                @auth
+                @if(auth()->user()->role === 'guru' || auth()->user()->role === 'admin')
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle px-lg-3 py-3 py-lg-4" href="#" id="guruDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Data Siswa <i class="fas fa-chevron-down ms-1"></i>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="guruDropdown">
+                        <li>
+                            <a class="dropdown-item" href="{{ url('/absensi') }}">
+                                <i class="fa-solid fa-calendar me-2"></i> absensi
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="/teacher-profile">
+                             <i class="fa-solid fa-star fa-sm fa-fw me-2 text-gray-400"></i> poin siswa
+                            </a>
+                        </li>
+                        <!-- admin akses -->
+                    @auth
+                    @if(auth()->user()->role === 'admin')
+                        <li>
+                            <a class="dropdown-item" href="/bulk_register">
+                                <i class="fa-solid fa-user-plus"></i> tambah siswa
+                            </a>
+                        </li>
+                        @endif
+                        @endauth
+                    </ul>
+                </li>
+                @endif
+                @endauth
+                
+                
+
+
+                <!-- USER -->
+>>>>>>> 35b9397e4565373c91cf8c37f3751f0aff7645c3
 
 
                     <!-- USER DROPDOWN -->
@@ -471,7 +612,63 @@
                             @endguest
                         </ul>
                     </li>
+<<<<<<< HEAD
 
+=======
+                    @auth
+                    @if(auth()->user()->role === 'admin' || auth()->user()->role === 'siswa')
+                    <li>
+                        <a class="dropdown-item" href="#">
+                            <i class="fa-solid fa-star fa-sm fa-fw me-2 text-gray-400"></i>
+                            poin anda
+                        </a>
+                    </li>
+                    @endif
+                    @endauth
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li>
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <button type="submit" class="dropdown-item">
+                                <i class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>
+                                Logout
+                            </button>
+                        </form>
+                        
+                    </li>
+                </ul>
+            </li>
+                @endauth
+
+
+                @guest
+         
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle d-flex align-items-center px-lg-3 py-3 py-lg-4" href="#"
+                        id="guestDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-user fa-lg text-white me-2"></i>
+                        <span class="text-white">Account</span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="guestDropdown">
+                        <li>
+                            <a class="dropdown-item" href="{{ url('/login') }}">
+                                <i class="bi bi-box-arrow-in-right fa-sm fa-fw me-2 text-gray-400"></i>
+                                Sign-in
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{{ url('/register') }}">
+                                <i class="bi bi-person-plus fa-sm fa-fw me-2 text-gray-400"></i>
+                                Sign-up
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+        
+                @endguest
+>>>>>>> 35b9397e4565373c91cf8c37f3751f0aff7645c3
             </ul>
         </div>
     </div>
