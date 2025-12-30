@@ -43,20 +43,27 @@ class AuthController extends Controller
     }
 
     public function login(Request $request)
-    {
-        $credentials = $request->only('email', 'password');
+{
+    $request->validate([
+        'login' => 'required',
+        'password' => 'required',
+    ]);
 
-        if (Auth::attempt($credentials, $request->remember)) {
-            // Kalau berhasil login
-            $request->session()->regenerate();
-            return redirect()->intended('/'); // ganti ke dashboard kalau mau
-        }
+    $login = $request->login;
 
-        // Kalau gagal login
-        return back()->withErrors([
-            'email' => 'Email atau password salah.',
-        ])->onlyInput('email');
+    $user = User::where('email', $login)
+                ->orWhereHas('siswa', function ($q) use ($login) {
+                    $q->where('nis', $login);
+                })
+                ->first();
+
+    if ($user && Hash::check($request->password, $user->password)) {
+        Auth::login($user);
+        return redirect('/');
     }
+
+    return back()->withErrors(['login' => 'Login gagal']);
+}
 
     public function logout(Request $request)
     {
