@@ -5,6 +5,7 @@ use App\Http\Controllers\BulkSiswaController;
 use App\Http\Controllers\AbsensiController;
 use App\Http\Controllers\DataAbsensiController;
 use App\Http\Controllers\poin_siswaController;
+use App\Http\Controllers\UserPoinController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -36,10 +37,15 @@ Route::middleware(['auth', 'role:admin,guru'])->group(function () {
     
     Route::get('/data_absen', [DataAbsensiController::class, 'monitoring']);
     Route::post('/data_absen', [DataAbsensiController::class, 'monitoring']);
-});
-Route::middleware(['auth', 'role:admin,guru'])->group(function () {
+
     Route::get('/poin_siswa', [poin_siswaController::class, 'index']);
     Route::post('/poin_siswa', [poin_siswaController::class, 'store']);
+});
+Route::middleware(['auth', 'role:admin,siswa'])->group(function () {
+    Route::get('/UserPoin', [UserPoinController::class, 'index']);
+    Route::post('/UserPoin', [UserPoinController::class, 'redeem'])
+    ->name('points.redeem')
+    ->middleware('auth');
 });
 
 Route::middleware(['auth', 'role:admin'])->group(function () {

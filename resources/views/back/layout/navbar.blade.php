@@ -456,10 +456,12 @@
                             Profile
                         </a>
                     </li>
+
+                    <!-- siswa aksess -->
                     @auth
                     @if(auth()->user()->role === 'admin' || auth()->user()->role === 'siswa')
                     <li>
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" href="/UserPoin">
                             <i class="fa-solid fa-star fa-sm fa-fw me-2 text-gray-400"></i>
                             poin anda
                         </a>
