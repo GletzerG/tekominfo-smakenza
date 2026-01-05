@@ -29,11 +29,7 @@
     {{-- Carousel --}}
     @include('back.layout.carousel')
 
-    {{-- Banner / Gambar --}}
-    <div class="text-center my-4">
-        <img src="{{ asset('uploads/SMKVOKASI.png') }}" class="img-fluid rounded mb-3" style="max-width: 500px;"
-            alt="Banner SMK Vokasi">
-    </div>
+
 
     {{-- Konten Dinamis --}}
     <main class="container">
