@@ -1,13 +1,14 @@
 @extends('back.layout.template')
 @extends('back.layout.vidio')
+
+
 @section('content')
                                     <!-- Main Content-->
-                        <div class="container px-4 px-lg-5">
+                        <div class="container pt-5 px-4 px-lg-5">
                             <div class="row gx-4 gx-lg-5 justify-content-center">
                                 <div class="video-section">
                                     <div class="section-header">
-                                        <h1 class="section-title">Lihat vidio ini</h1>
-                                        <p class="section-subtitle">Lorem Ipsum Dolor Sit Amet Consectrour</p>
+                                        <h1 class="section-title">Video Kami</h1>
                                     </div>
                                 </div>
                             </div>

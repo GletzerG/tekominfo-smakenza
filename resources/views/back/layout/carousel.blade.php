@@ -1,13 +1,14 @@
 <style>
     .carousel-caption {
-        background: rgba(0, 0, 0, 0.4);
+        background: rgba(158, 158, 158, 0.4);
         padding: 15px;
         border-radius: 10px;
         transition: background 0.3s ease, transform 0.3s ease;
+        bottom: -30vh;
     }
 
     .carousel-item:hover .carousel-caption {
-        background: rgba(0, 0, 0, 0.7);
+        background: rgba(58, 58, 58, 0.603);
         transform: scale(1.05);
     }
 
@@ -18,14 +19,24 @@
 
     .carousel-item:hover .carousel-caption h5,
     .carousel-item:hover .carousel-caption p {
-        color: #f8f9fa;
+        color: #ffffff;
+    }
+
+    .carousel-item{
+        transition: transform 0.3s ease-in-out;
     }
 
     .carousel-item img {
+        
         width: 100%;
-        height: 500px;
+        height: 100vh;
         /* Tinggi fix, sesuaikan kebutuhan */
         object-fit: cover;
+    }
+
+
+    .carousel-inner{
+        height: 100vh;
     }
 </style>
 

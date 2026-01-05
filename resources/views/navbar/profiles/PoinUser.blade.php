@@ -208,6 +208,14 @@
     }
 }
 
+body.bg-poin-user {
+    min-height: 100vh;
+    background-image: url('{{ asset('images/asset/bgpoin.jpg') }}');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
 </style>
 
 <section id="UserPoin">
